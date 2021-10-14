@@ -37,6 +37,7 @@ export class FormComponent implements OnInit {
 
 
   onSubmit() {
+    confirm('Do you want to submit?')
      this.isStudentForm = true;
     console.log("Student Data", this.studentForm.value);
   }
