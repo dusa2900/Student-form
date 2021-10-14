@@ -1,0 +1,114 @@
+
+<div class="container ">
+  <div class="row d-flex justify-content-center align-items-center ">
+    <div class="col-lg-12 col-xl-11">
+      <div class="card text-black" style="border-radius: 25px;">
+        <div class="card-body p-md-5">
+          <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+              <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Student form</p>
+
+         <!--form start-->
+              <form class="mx-1 mx-md-4" [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+
+                <div class=" flex-row align-items-center mb-4">
+                  <strong for="">First Name:</strong>
+                  <div class="form-outline flex-fill mb-0">
+                    <input type="text" formControlName="firstName" id="firstName" class="form-control"
+                      placeholder="Your First Name" />
+                      <span *ngIf="studentForm.get('firstName').hasError('required') && studentForm.get('firstName').touched"> first name is required</span> 
+                      <span *ngIf="studentForm.get('firstName').hasError('minlength') && studentForm.get('firstName').touched">  first name must be at least 3 characters </span>
+                  </div>
+                </div>
+
+                <div class=" flex-row align-items-center mb-4">
+                  <strong for="">Last Name:</strong>
+                  <div class="form-outline flex-fill mb-0">
+                    <input type="text" formControlName="lastName" id="lastName" class="form-control"
+                      placeholder="Your last Name" />
+                      <span *ngIf="studentForm.get('lastName').hasError('required') && studentForm.get('lastName').touched"> last name is required</span> 
+                      <span *ngIf="studentForm.get('lastName').hasError('minlength') && studentForm.get('lastName').touched"> last name must be at least 3 characters </span>
+                  </div>
+                </div>
+
+                <div class=" flex-row align-items-center mb-4">
+                  <strong for="">Father Name:</strong>
+                  <div class="form-outline flex-fill mb-0">
+                    <input type="text" formControlName="fatherName" id="fatherName" class="form-control"
+                      placeholder="Father Name"  />
+                      <span *ngIf="studentForm.get('fatherName').hasError('required') && studentForm.get('fatherName').touched"> Father Name is required</span> 
+                  </div>
+                </div>
+
+                <div class=" flex-row align-items-center mb-4">
+                  <strong for="">Student ID:</strong>
+                  <div class="form-outline flex-fill mb-0">
+                    <input type="text" formControlName="studentId" id="studentId" class="form-control"
+                      placeholder="Your Student id number" />
+                      <span *ngIf="studentForm.get('studentId').hasError('required') && studentForm.get('studentId').touched"> ID number is required</span> 
+                      <span *ngIf="studentForm.get('studentId').hasError('pattern') && studentForm.get('studentId').touched"> ID number must be valid with 5 characters </span>
+                  </div>
+                </div>
+
+                <div class=" flex-row align-items-center mb-4">
+                  <strong for="">Mobile:</strong>
+                  <div class="form-outline flex-fill mb-0">
+                    <input type="text" formControlName="mobile" id="mobile" class="form-control"
+                      placeholder="Your Mobile number"  />
+                      <span *ngIf="studentForm.get('mobile').hasError('required') && studentForm.get('mobile').touched">  Mobile is required</span> 
+                      <span *ngIf="studentForm.get('mobile').hasError('pattern') && studentForm.get('mobile').touched">mobile number must be valid(6-9)& 10 numbers  </span>
+                  </div>
+                </div>
+
+
+
+                <div formGroupName="address">
+                  <h3>Address</h3>
+                  <br>
+                  <div class=" flex-row align-items-center mb-4">
+                    <strong for="">City:</strong>
+                    <div class="form-outline flex-fill mb-0">
+                      <input type="text" formControlName="city" id="city" class="form-control" placeholder="Enter city"/>
+                      <span *ngIf="studentForm.get('address.city').hasError('required') && studentForm.get('address.city').touched"> City is required</span> 
+                   </div>
+                  </div>
+
+                  <div class="flex-row align-items-center mb-4">
+                    <strong for="">Zip:</strong>
+                    <div class="form-outline flex-fill mb-0">
+                      <input type="text" formControlName="zip" id="zip" class="form-control" placeholder="Enter Zipcode" />
+                      <span *ngIf="studentForm.get('address.zip').hasError('required') && studentForm.get('address.zip').touched">Zipcode is required</span> 
+                      <span *ngIf="studentForm.get('address.zip').hasError('pattern') && studentForm.get('address.zip').touched">Zipcode must be valid 6 numbers  </span>
+                    </div>
+                  </div>
+                </div>
+              
+                <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                  <button type="submit" class="btn btn-primary btn-lg" [disabled]="!studentForm.valid">Submit</button> &nbsp;
+                  <button class="btn btn-secondary" type="reset" (click)="clear()">Cancel</button>
+                </div>
+
+              </form>
+            <!--form end-->
+            </div>
+            <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+              <img src="https://mdbootstrap.com/img/Photos/new-templates/bootstrap-registration/draw1.png"
+                class="img-fluid" alt="Sample image">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <span *ngIf="isStudentForm">
+    <p>
+      Student Data: <b> {{studentForm.value | json}}</b>
+    </p>
+    <p>
+      Student Status: <b> {{studentForm.status}}</b>
+    </p>
+    </span>
+  </div>
+
+</div>
