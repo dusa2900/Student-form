@@ -85,7 +85,7 @@
                 </div>
               
                 <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                  <button type="submit" class="btn btn-primary btn-lg" [disabled]="!studentForm.valid">Submit</button> &nbsp;
+                  <button type="submit" class="btn btn-primary btn-lg" [disabled]="!studentForm.valid" [ngClass]="{'btnColor':!studentForm.valid}">Submit</button> &nbsp;
                   <button class="btn btn-secondary" type="reset" (click)="clear()">Cancel</button>
                 </div>
 
